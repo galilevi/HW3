@@ -1,8 +1,7 @@
 function createNewVisitor(event) {
   // ביטול התנהגות דיפולטיבית של שליחת טופס
   // קראו עוד כאן: https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault
-  event.preventDefault();
-
+  document.getElementById('create-visitor-form').addEventListener('submit', event => event.preventDefault())
   /**
   צרו אורח חדש כאן 👇
   ניתן לפצל את הלוגיקה למספר בלתי מוגבל של פונקציות.
