@@ -6,13 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Signup</title>
     <script src="./main.js"></script>
+    <link rel="stylesheet" href="./signUp.css"/>
   </head>
   <body> 
     <!-- צרו טופס יצירת אורח חדש -->
     <form id="create-visitor-form">
     <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
-        <button type="submit">Create Visitor</button>
+
+        <button id="choose-avatar">Choose Avatar</button>
+        <div id="avatar-panel" style="display:none;">
+          <img src="./visitorImage/M1.jpeg" alt="Avatar 1" class="avatar" data-avatar="M1.jpeg">
+          <img src="./visitorImage/M1.jpeg" alt="Avatar 2" class="avatar" data-avatar="M2.jpeg">
+          <img src="./visitorImage/M3.jpeg" alt="Avatar 3" class="avatar" data-avatar="M3.jpeg">
+          <img src="./visitorImage/M4.jpeg" alt="Avatar 4" class="avatar" data-avatar="M4.jpeg">
+          <img src="./visitorImage/M5.jpeg" alt="Avatar 5" class="avatar" data-avatar="M5.jpeg">
+          <img src="./visitorImage/M6.jpeg" alt="Avatar 6" class="avatar" data-avatar="M6.jpeg">
+          <img src="./visitorImage/M7.jpeg" alt="Avatar 7" class="avatar" data-avatar="M7.jpeg">
+          <img src="./visitorImage/M8.jpeg" alt="Avatar 8" class="avatar" data-avatar="M8.jpeg">
+          <img src="./visitorImage/M9.jpeg" alt="Avatar 9" class="avatar" data-avatar="M9.jpeg">
+          <img src="./visitorImage/M10.jpeg" alt="Avatar 10" class="avatar" data-avatar="M10.jpeg">
+          <img src="./visitorImage/M11.jpeg" alt="Avatar 11" class="avatar" data-avatar="M11.jpeg">
+          <img src="./visitorImage/M12.jpeg" alt="Avatar 12" class="avatar" data-avatar="M12.jpeg">
+          <img src="./visitorImage/M13.jpeg" alt="Avatar 13" class="avatar" data-avatar="M13.jpeg">
+          <img src="./visitorImage/W1.jpeg" alt="Avatar 14" class="avatar" data-avatar="W1.jpeg">
+          <img src="./visitorImage/W2.jpeg" alt="Avatar 15" class="avatar" data-avatar="W2.jpeg">
+          <img src="./visitorImage/W3.jpeg" alt="Avatar 16" class="avatar" data-avatar="W3.jpeg">
+          <img src="./visitorImage/W4.jpeg" alt="Avatar 17" class="avatar" data-avatar="W4.jpeg">
+          <img src="./visitorImage/W5.jpeg" alt="Avatar 18" class="avatar" data-avatar="W5.jpeg">
+          <img src="./visitorImage/W6.jpeg" alt="Avatar 19" class="avatar" data-avatar="W6.jpeg">
+          <img src="./visitorImage/W7.jpeg" alt="Avatar 20" class="avatar" data-avatar="W7.jpeg">
+          <img src="./visitorImage/W8.jpeg" alt="Avatar 21" class="avatar" data-avatar="W8.jpeg">
+          <!-- Add more avatars -->
+        </div>
+    <button type="submit">Create Visitor</button>
     </form>
     <!-- לאחר יצירה, הוסיפו אותו למערך האורחים ושמרו את מערך האורחים המעודכן בלוקל סטורג' -->
     <!-- עברו לעמוד התחברות כדי לבחור את האורח שאיתו תכנסו לגן החיות -->

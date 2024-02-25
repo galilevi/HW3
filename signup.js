@@ -1,9 +1,22 @@
-document.getElementById('create-visitor-form').addEventListener('submit', createNewVisitor);
+let selectedAvatar = '';
 
-function createNewVisitor(event) {
-  // השורה הזו מונעת את התנהגות ברירת המחדל של השליחה, כך שהטופס לא ישלח באופן אוטומטי.
+document.getElementById('choose-avatar').addEventListener('click', function() {
+  const panel = document.getElementById('avatar-panel');
+
+  panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+});
+
+document.querySelectorAll('.avatar').forEach(image => {
+  image.addEventListener('click', function() {
+    selectedAvatar = this.getAttribute ('src');
+    document.querySelectorAll('.avatar').forEach(i => i.classList.remove('selected'));
+    this.classList.add('selected');
+    document.getElementById('avatar-panel').style.display = 'none';
+  });
+});
+
+document.getElementById('create-visitor-form').addEventListener('submit', function(event) {
   event.preventDefault();
-
   const nameInput = document.getElementById('name'); 
   const name = nameInput.value.trim();
 
@@ -12,25 +25,28 @@ function createNewVisitor(event) {
     return;
   }
 
+  if (!selectedAvatar) {
+    alert("Please select an avatar.");
+    return;
+  }
+
   if (visitorExists(name)) {
     alert("A visitor with this name already exists.");
     return;
   }
 
-  const newVisitor = makeVisitor(name);
+  const newVisitor = makeVisitor(name,selectedAvatar);
   visitors.push(newVisitor);
-
   localStorage.setItem('visitors', JSON.stringify(visitors));
   window.location.href = "login.html";
-}
-
+});
 
 function visitorExists(name) {
   return visitors.some(visitor => visitor.name === name);
 }
 
-function makeVisitor(name) {
-  return { name, coins: 50 };
+function makeVisitor(name, avatar) {
+  return { name, coins: 50, image: avatar };
 }
 
 const createForm = document.getElementById("create-visitor-form");

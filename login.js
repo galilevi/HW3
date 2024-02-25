@@ -4,7 +4,7 @@ const dialog = document.querySelector("#visitor-dialog");
 const getVisitorHTMLCard = (visitor) => {
   const template = `
       <div class="card" style="min-height: 360px;" >
-        <img class="card-img-top" src="${visitor.image}" alt="${visitor.name}"/>
+        <img class="card-img" src="${visitor.image}" alt="${visitor.name}"/>
         <div class="card-body">
           <p class="card-text">${visitor.name}</p>
           <p class="card-text">Coins: ${visitor.coins}</p>
