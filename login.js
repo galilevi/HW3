@@ -10,7 +10,21 @@ const getVisitorHTMLCard = (visitor) => {
           <p class="card-text">Coins: ${visitor.coins}</p>
         </div>
       </div>`;
-      
+
+const wrapper = document.createElement("div")
+wrapper.className= "visitor-card";
+wrapper.innerHTML = template;
+
+wrapper.addEventListener("click", () => loginAsVisitor (visitor.name));
+return wrapper;
+};
+
+const getCloseModalHTMLButton = () => {
+  const closeButton = document.createElement("button");
+  closeButton.innerText="close modal";
+  closeButton.addEventListener("click",()=> dialog.close ())
+  return closeButton;
+}
 
 function loginAsVisitor(visitorName) {
   // תממשו את הלוגיקה של בחירת אורח שנכנס לגן החיות
@@ -18,4 +32,4 @@ function loginAsVisitor(visitorName) {
 
 
 }
-}
+

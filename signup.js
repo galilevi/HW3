@@ -1,12 +1,12 @@
 
-
 function createNewVisitor(event){
-document.getElementById('create-visitor-form').addEventListener('submit',event => event.preventDefault());
+event.preventDefault();
 const nameInput = document.getElementById('name');
 const name = nameInput.value.trim();
 
 if(!name){
   alert("Name cannot be empty!)");
+return;
 }
 
 // if(!selectedAvatar){
@@ -15,16 +15,13 @@ if(!name){
 
 if(visitorExists(name)){
   alert("A visitor with this name already exists!");
+  return;
 }
 
-const newVisitor = makeVisitor(name,selectedAvatar);
+const newVisitor = makeVisitor(name);
 visitors.push(newVisitor);
 localStorage.setItem('visitors', JSON.stringify(visitors));
-window.location.href = "login.html";
-
-const createForm = document.getElementById("create-visitor-form");
-if (createForm) {
-  createForm.addEventListener("submit", createNewVisitor);}
+window.location.href = "/login.html";
 }
 
 
@@ -36,7 +33,11 @@ function makeVisitor(name, avatar) {
   return { name, coins: 50, image: avatar };
 }
 
-
+const createForm = document.getElementById("create-visitor-form");
+if (createForm) 
+{
+  createForm.addEventListener("submit", createNewVisitor);
+}
 
 
 

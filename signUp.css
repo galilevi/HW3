@@ -1,4 +1,26 @@
-#avatar-panel {
+body{
+    background-image: url(./zoo-background.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: 100%;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* #avatar-panel {
 display: flex;
 flex-wrap: wrap;
 justify-content: center;
@@ -8,16 +30,16 @@ padding: 20px;
 }
 .avatar {
 width: 60px; /* Adjust size as needed */
-cursor: pointer;
+/* cursor: pointer;
 transition: transform 0.2s; /* Smooth scaling */
-}
+/* }
 .avatar:hover {
 transform: scale(1.1); /* Slightly enlarge avatars on hover */
-}
-.selected {
+/* } */
+/* .selected {
 border:rgba(0, 0, 0, 0.453); /* Highlight selected avatar */
-}
+/* }
 #choose-avatar {
 display: block;
 margin: 20px auto; /* Center the button */
-}
+/* } */

@@ -10,8 +10,8 @@
   </head>
   <body> 
     <!-- צרו טופס יצירת אורח חדש -->
-    <form id="create-visitor-form">
-    <label for="name">Name:</label>
+    <form id="create-visitor-form" action="login.html" method="post">
+        <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
 
         <!-- <button id="choose-avatar">Choose Avatar</button>
@@ -38,9 +38,10 @@
           <img src="./visitorImage/W7.jpeg" alt="Avatar 20" class="avatar" data-avatar="W7.jpeg">
           <img src="./visitorImage/W8.jpeg" alt="Avatar 21" class="avatar" data-avatar="W8.jpeg">
           Add more avatars -->
-        </div>
+        <!-- </div> -->
     <button type="submit">Create Visitor</button>
-    </form>
+
+    </form>   
     <!-- לאחר יצירה, הוסיפו אותו למערך האורחים ושמרו את מערך האורחים המעודכן בלוקל סטורג' -->
     <!-- עברו לעמוד התחברות כדי לבחור את האורח שאיתו תכנסו לגן החיות -->
     <!-- ממשו את הלוגיקה של היצירה, בפונקציה שהוגדרה מראש בקובץ signup.js -->
