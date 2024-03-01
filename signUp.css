@@ -1,45 +1,31 @@
-body{
-    background-image: url(./zoo-background.webp);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-    background-size: 100%;
-
+body {
+  background-image: url(./zoo-background.webp);
+  background-size: 100% 100%; /* Ensure the background image covers the entire viewport */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-/* #avatar-panel {
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-gap: 10px;
-padding: 20px;
-
+#avatar-panel {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
 }
 .avatar {
-width: 60px; /* Adjust size as needed */
-/* cursor: pointer;
-transition: transform 0.2s; /* Smooth scaling */
-/* }
+  width: 60px;
+  cursor: pointer;
+  transition: transform 0.2s; /* Smooth scaling */
+}
 .avatar:hover {
-transform: scale(1.1); /* Slightly enlarge avatars on hover */
-/* } */
-/* .selected {
-border:rgba(0, 0, 0, 0.453); /* Highlight selected avatar */
-/* }
+  transform: scale(1.1); /* Slightly enlarge avatars on hover */
+}
+.selected {
+  border: rgba(0, 0, 0, 0.453); /* Highlight selected avatar */
+}
+
 #choose-avatar {
-display: block;
-margin: 20px auto; /* Center the button */
-/* } */
+  display: block;
+  margin: 20px auto;
+}
