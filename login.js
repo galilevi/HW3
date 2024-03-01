@@ -49,7 +49,7 @@ const getEmptyCardsHTMLTemplate = () => {
   templateWrapper.className = "empty-result";
 
   const template = `
-    <h2>No visitor Found</h2>
+    <h2>No visitors Found</h2>
     <p>We're sorry, but no visitors match your search or filter criteria.</p>
     <button id="clear-filter-btn" class="btn btn-dark">Clear search text</button>`;
 
