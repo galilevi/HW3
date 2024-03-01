@@ -1,0 +1,62 @@
+body{
+    background-image: url(./zoo-background.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: 100%;
+
+}
+#place-holder {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* מרווח בין הכרטיסיות */
+    justify-content: center; /* ממרכז את הכרטיסיות אם יש מקום */
+    padding: 20px; /* רווח בפנים מהקצוות */
+  }
+  
+  /* הגדרת סגנון לכרטיסיות המבקרים */
+  .visitor-card {
+    flex: 0 1 200px; /* flex-grow, flex-shrink, flex-basis */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* צל קל */
+    border-radius: 10px; /* קצוות מעוגלים */
+    overflow: hidden; /* מונע גלישת תוכן מחוץ לגבולות */
+    background-color: rgba(255, 255, 255, 0.5); /* שקיפות */
+    backdrop-filter: blur(10px); /* טשטוש הרקע חזק יותר */
+  }
+  
+  /* תמונה בתוך הכרטיס */
+  .card-img {
+    width: 100%; /* מתאים את רוחב התמונה לכרטיס */
+    height: auto; /* שומר על פרופורציות התמונה */
+  }
+  
+  /* הגדרות לתוכן הכרטיס */
+  .card-body {
+    padding: 15px; /* רווח בפנים מהקצוות */
+    text-align: center; /* ממרכז את הטקסט */
+  }
+  
+  /* טקסט בכרטיס */
+  .card-text {
+    margin: 5px 0; /* רווח מלמעלה ומלמטה */
+  }
+  
+  /* סגנון לכפתור */
+  button {
+    cursor: pointer; /* מצביע כפתור כאשר העכבר מעל */
+    padding: 10px 20px; /* רווח בפנים */
+    margin-top: 10px; /* רווח מלמעלה */
+    border: none; /* מסיר גבולות */
+    background-color: #007bff; /* רקע כחול */
+    color: white; /* טקסט לבן */
+    border-radius: 5px; /* קצוות מעוגלים */
+    transition: background-color 0.3s; /* אפקט חלק בשינוי צבע */
+  }
+  
+  button:hover {
+    background-color: #0056b3; /* צבע רקע כהה יותר בעת העברת העכבר */
+  }
