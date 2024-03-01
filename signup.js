@@ -1,3 +1,4 @@
+let selectedAvatar;
 document.getElementById("choose-avatar").addEventListener("click", function () {
   const panel = document.getElementById("avatar-panel");
 

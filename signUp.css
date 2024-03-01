@@ -1,9 +1,41 @@
 body {
   background-image: url(./zoo-background.webp);
-  background-size: 100% 100%; /* Ensure the background image covers the entire viewport */
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
+  font-family: Garamond, serif;
+  padding-top: 100px; /* Add padding to create space for the fixed elements */
+}
+
+.header {
+  text-align: center;
+  padding: 100px 0; /* Increase the padding to make the header taller */
+  color: #fff; /* Header text color */
+  font-size: 2.5em; /* Increase the font size */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a text shadow */
+  border-radius: 10px; /* Add border radius to soften edges */
+  animation: fadeIn 3s ease; /* Add fade-in animation */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.sticky-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent white background */
+  z-index: 1000; /* Ensure the header stays above other content */
+  padding: 10px 20px; /* Adjust padding as needed */
 }
 
 #avatar-panel {
@@ -11,21 +43,73 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
-  padding: 20px;
+  padding: 20px 0;
 }
+
 .avatar {
-  width: 60px;
+  width: 200px;
   cursor: pointer;
   transition: transform 0.2s; /* Smooth scaling */
 }
+
 .avatar:hover {
   transform: scale(1.1); /* Slightly enlarge avatars on hover */
 }
+
 .selected {
-  border: rgba(0, 0, 0, 0.453); /* Highlight selected avatar */
+  border: 2px solid black; /* Highlight selected avatar */
 }
 
-#choose-avatar {
-  display: block;
-  margin: 20px auto;
+label[for="name"] {
+  margin-bottom: 10px;
+  color: #fff;
+  font-size: 3em; /* Adjust the font size as needed */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a text shadow */
+}
+
+input[type="text"]:focus {
+  outline: none; /* Remove default focus outline */
+  border-color: #4caf50; /* Change border color on focus */
+}
+
+#choose-avatar,
+#create-visitor {
+  display: inline-block; /* Display buttons next to each other */
+  margin: 20px; /* Add margin between the buttons */
+  padding: 10px 20px;
+  background-color: #63c363;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#choose-avatar:hover,
+#create-visitor:hover {
+  background-color: #3d8b41;
+}
+
+form {
+  text-align: center;
+  margin-top: 50px; /* Adjust as needed */
+}
+
+input[type="text"] {
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
 }

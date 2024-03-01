@@ -9,12 +9,18 @@
     <link rel="stylesheet" href="./signUp.css" />
   </head>
   <body>
+    <header class="header">
+      <h1>Welcome to Our Zoo!</h1>
+      <p>Sign up to explore the wonders of our animal kingdom.</p>
+    </header>
     <!-- צרו טופס יצירת אורח חדש -->
     <form id="create-visitor-form" action="login.html" method="post">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required />
-
-      <button id="choose-avatar">Choose Avatar</button>
+      <div class="sticky-header">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+        <button id="choose-avatar">Choose Avatar</button>
+        <button type="submit">Create Visitor</button>
+      </div>
       <div id="avatar-panel" style="display: none">
         <img
           src="./visitorImage/M1.jpeg"
@@ -143,7 +149,6 @@
           data-avatar="W8.jpeg"
         />
       </div>
-      <button type="submit">Create Visitor</button>
     </form>
     <!-- לאחר יצירה, הוסיפו אותו למערך האורחים ושמרו את מערך האורחים המעודכן בלוקל סטורג' -->
     <!-- עברו לעמוד התחברות כדי לבחור את האורח שאיתו תכנסו לגן החיות -->
