@@ -8,22 +8,40 @@ body {
     font-size: 1.5em;
     font-weight: bold;
   }
-  
-.animal-cards {
-    border: 1px solid #ccc; /* Add a border around each card */
-    border-radius: 10px; /* Rounded corners for the card */
-    margin: 10px; /* Add some margin around each card */
-    padding: 10px; /* Add padding inside each card */
-    width: 200px; /* Set a fixed width for the card */
-    display: inline-block; /* Display cards in a row */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a shadow effect */
-    backdrop-filter: blur(10px); /* טשטוש הרקע חזק יותר */
-
+  h1{
+    text-align: center;
+    padding: 100px 0; /* Increase the padding to make the header taller */
+    color: #fff; /* Header text color */
+    font-size: 2.5em; /* Increase the font size */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a text shadow */
+    border-radius: 10px; /* Add border radius to soften edges */
+    animation: fadeIn 3s ease; /* Add fade-in animation */
+  }
+  #animal-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* מרווח בין הכרטיסיות */
+    justify-content: center; /* ממרכז את הכרטיסיות אם יש מקום */
+    padding: 20px; /* רווח בפנים מהקצוות */
+  }
+.animal-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px; /* קצוות מעוגלים */
+  overflow: hidden; /* מונע גלישת תוכן מחוץ לגבולות */
+  background-color: rgba(255, 255, 255, 0.5); /* שקיפות */
+  backdrop-filter: blur(10px); /* טשטוש הרקע חזק יותר */
+  text-align: center;
+  border: 3px solid #000000;
+  padding: 30px;
   }
   
-  .animal-cards img {
-    width: 100%; /* Make the image inside the card fill its container */
-    border-radius: 10px; /* Rounded corners for the image */
+  .card-img {
+    border-radius: 10px;
+    height: 274px; /* שומר על פרופורציות התמונה */
+    width: 180px;
   }
   
   .card-body {
