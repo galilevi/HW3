@@ -46,6 +46,8 @@ button {
   color: white;
   border-radius: 5px;
   transition: background-color 0.3s; /* אפקט חלק בשינוי צבע */
+  margin-right: 5px;
+  margin-left: 5px;
 }
 
 button:hover {
@@ -53,6 +55,13 @@ button:hover {
 }
 #query-input {
   display: block;
-  margin: 0 auto;
+  width: 80%; /* Adjusts the width of the search box */
+  max-width: 600px; /* Ensures the search box doesn't get too wide on larger screens */
+  padding: 15px 20px; /* Increases padding for a taller input field */
+  margin: 20px auto; /* Increases margin for more space around the search box */
+  font-size: 1.2rem; /* Makes the text inside the input larger */
+  border: 2px solid #392f01; /* Optional: Adds a solid border to make the input stand out */
+  border-radius: 10px; /* Optional: Rounds the corners for a modern look */
   text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: Adds a subtle shadow for depth */
 }

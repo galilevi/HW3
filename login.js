@@ -28,7 +28,12 @@ const getCloseModalHTMLButton = () => {
 
 const handleVisitorClick = (visitor) => {
   dialog.innerHTML = "";
-  dialog.append(getCloseModalHTMLButton(), getVisitorHTMLCard(visitor));
+  const visitorCard = getVisitorHTMLCard(visitor);
+  const closeButton = getCloseModalHTMLButton();
+  const loginButton = document.createElement("button");
+  loginButton.textContent = "Login";
+  loginButton.onclick = () => loginAsVisitor(visitor.name); // Triggers login
+  dialog.append(closeButton,loginButton, visitorCard);
   dialog.showModal();
 };
 
@@ -81,15 +86,20 @@ window.addEventListener("load", renderVisitors);
 
 
 
-
-
-
-
-function loginAsVisitor(visitorName) {
+function loginAsVisitor(visitorname) {
   // תממשו את הלוגיקה של בחירת אורח שנכנס לגן החיות
   // שמרו את האורח שבחרתם, בלוקל סטורג' כך שבכל העמודים נדע מי האורח הנוכחי
+const currentVisitor= localStorage.getItem("currentVisitor")
 
-
-
+if(currentVisitor)
+{
+  const confirmLogout = confirm(`A visitor is already logged in ${currentVisitor}. Do you want to log out and switch to a different visitor?`);
+  if (!confirmLogout){
+    return;
+  }
+}
+localStorage.setItem("currentVisitor", visitorname);
+alert (`${visitorname} is now logged in.`);
+window.location.href="/zoo.html";
 }
 
