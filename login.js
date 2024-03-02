@@ -10,7 +10,7 @@ const getVisitorHTMLCard = (visitor) => {
           <p class="card-text">Coins: ${visitor.coins}</p>
         </div>
       </div>`;
-
+      
 const wrapper = document.createElement("div")
 wrapper.className= "visitor-card";
 wrapper.innerHTML = template;
