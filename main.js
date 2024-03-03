@@ -110,7 +110,7 @@ let animals = [
     height: 120,
     color: "brown",
     habitat: "land",
-    image:"animalImage/lion.jpeg",
+    image: "animalImage/lion.jpeg",
   },
   {
     name: "Elephant",
@@ -119,7 +119,7 @@ let animals = [
     height: 200,
     color: "grey",
     habitat: "land",
-    image:"animalImage/elephent.jpeg",
+    image: "animalImage/elephent.jpeg",
   },
   {
     name: "Giraffe",
@@ -128,7 +128,7 @@ let animals = [
     height: 120,
     color: "brown",
     habitat: "land",
-    image:"animalImage/giraffe.jpeg",
+    image: "animalImage/giraffe.jpeg",
   },
   {
     name: "Tiger",
@@ -137,7 +137,7 @@ let animals = [
     height: 120,
     color: "brown",
     habitat: "land",
-    image:"animalImage/tiger.jpeg",
+    image: "animalImage/tiger.jpeg",
   },
   {
     name: "Monkey",
@@ -146,7 +146,7 @@ let animals = [
     height: 120,
     color: "brown",
     habitat: "land",
-    image:"animalImage/monkey.jpeg",
+    image: "animalImage/monkey.jpeg",
   },
   {
     name: "Kangaroo",
@@ -155,7 +155,7 @@ let animals = [
     height: 120,
     color: "brown",
     habitat: "land",
-    image:"animalImage/kangeroo.jpeg",
+    image: "animalImage/kangeroo.jpeg",
   },
   {
     name: "Penguin",
@@ -164,7 +164,7 @@ let animals = [
     height: 120,
     color: "brown",
     habitat: "sea",
-    image:"animalImage/penguin.jpeg",
+    image: "animalImage/penguin.jpeg",
   },
   {
     name: "Zebra",
@@ -182,7 +182,7 @@ let animals = [
     height: 120,
     color: "brown",
     habitat: "land",
-    image : "animalImage/cheetah.jpeg",
+    image: "animalImage/cheetah.jpeg",
   },
 ];
 

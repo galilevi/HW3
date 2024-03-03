@@ -31,7 +31,9 @@ function currentHabitatNow(currentAnimalName) {
   for (let i = 0; i < animals.length; i++) {
     if (currentAnimalName === animals[i].name) {
       const CurHabitat = animals[i].habitat;
+      const CurPredetor = animals[i].isPredator;
       localStorage.setItem("CurHabitat", CurHabitat);
+      localStorage.setItem("CurPredetor", CurPredetor);
     }
   }
 }
@@ -59,14 +61,54 @@ function renderRelatedAnimals() {
     }
   });
 }
+const currentVisitorName = localStorage.getItem("currentVisitor");
+const dialogFeed = document.createElement("dialog");
+const feed = document.getElementById("feed-animal");
+feed.addEventListener("click", () => feedAnimal(currentVisitorName));
 
-// רנדרו אותן לתוך הדיב שמיועד להן עם האיידי related-animals
-// ממשו את אותה לוגיקה של כרטיסיית חיה כמו בכרטיסיות בעמוד zoo.html
-
-function feedAnimal() {
-  // ממשו את הלוגיקה של האכלת חיה
-  // במידה ואין מספיק מטבעות, טפלו בהתאם להנחיות במטלה
+function currentVisitorNow(currentVisitorName) {
+  for (let i = 0; i < visitors.length; i++) {
+    if (currentVisitorName === visitors[i].name) {
+      const VisitorCoins = visitors[i].coins;
+      localStorage.setItem("VisitorCoins", VisitorCoins);
+    }
+  }
 }
+
+function feedAnimal(Visitor) {
+  currentVisitorNow(Visitor);
+  dialogFeed.innerHTML = "";
+  // if (VisitorCoins == 0) {
+  //   if (CurPredetor) {
+  //     visitorGotEaten();
+  //     return;
+  //   }
+  //   animalEscaped();
+  //   return;
+  // }
+  for (let i = 0; i < visitors.length; i++) {
+    if (Visitor === visitors[i].name) {
+      visitors[i].coins -= 2;
+      localStorage.setItem("visitors", JSON.stringify(visitors));
+    }
+  }
+  dialogFeed.innerText =
+    "Thanks for feeding me, i hope you are enjoying your visit";
+  const BtnBackToZoo = BackToZoo();
+  dialogFeed.appendChild(BtnBackToZoo);
+  document.body.appendChild(dialogFeed);
+  dialogFeed.showModal();
+}
+
+const BackToZoo = () => {
+  const BtnBackToZoo = document.createElement("button");
+  BtnBackToZoo.innerText = "Back";
+  BtnBackToZoo.addEventListener(
+    "click",
+    () => (window.location.href = "/zoo.html")
+  );
+  return BtnBackToZoo;
+};
 
 function visitorGotEaten() {
   // ממשו את הלוגיקה של חיה שטורפת אורח
