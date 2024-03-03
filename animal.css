@@ -1,60 +1,103 @@
 body {
-    background-image: url(./zoo-background.webp);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-    font-family: Garamond, serif;
-    font-weight: bold;
-    display:flex;
-    justify-content: center; /* ממרכז את הכרטיסיות אם יש מקום */
-    align-items: center;
-  }
+  background-image: url(./zoo-background.webp);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  font-family: Garamond, serif;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
 
-  #curAnimal {
-    display: flex; /* משתמשים ב-flexbox */
-    justify-content: center; /* ממרכזים את התוכן */
-    align-items: center; /* מיישרים את התוכן למרכז בציר האנכי */
-    width: 60%; /* רוחב הכרטיסיה */
-    margin: auto; /* ממרכזים את הכרטיסיה בעמוד */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* נותן צל קל */
-    border-radius: 10px; /* פינות מעוגלות */
-    overflow: hidden; /* מונע תצוגה של תוכן מחוץ לגבולות הכרטיסיה */
-  }
-  
-  #image, #curAnimal-body {
-    flex: 1; /* שני האלמנטים ייקחו את אותו המרחב */
-  }
-    #image {
-    width: 100%; /* מתאים את רוחב התמונה לרוחב האלמנט שלה */
-    height: auto; /* שומר על יחסי גודל נכונים */
-    border-radius: 40px;
-  }
-  
-  #curAnimal-body {
-    padding: 20px; /* מרווח בפנים */    
-  }
+#curAnimal {
+  display: flex; /* משתמשים ב-flexbox */
+  justify-content: center; /* ממרכזים את התוכן */
+  align-items: center; /* מיישרים את התוכן למרכז בציר האנכי */
+  width: 60%; /* רוחב הכרטיסיה */
+  margin: auto; /* ממרכזים את הכרטיסיה בעמוד */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* נותן צל קל */
+  border-radius: 10px; /* פינות מעוגלות */
+  overflow: hidden; /* מונע תצוגה של תוכן מחוץ לגבולות הכרטיסיה */
+}
 
-  #detils {
-    font-size: 2rem;
-  }
+#image {
+  width: 300px; /* מתאים את רוחב התמונה לרוחב האלמנט שלה */
+}
+#image > img {
+  border-radius: 100px;
+}
+#curAnimal-body {
+  padding: 20px; /* מרווח בפנים */
+}
 
-  /* הוספת מעט עיצוב נוסף לכותרת ולפרטים */
-  #name {
-    font-size: 4rem;
-    margin-bottom: 15px;
-  }
-  
-  /* עיצוב נוסף לכפתור */
-  #feed-animal {
-    background-color: #ffffff; /* צבע רקע */
-    color: rgb(0, 0, 0); /* צבע טקסט */
-    padding: 10px 20px; /* מרווח בפנים */
-    border: none; /* הסרת גבול */
-    border-radius: 5px; /* פינות מעוגלות */
-    cursor: pointer; /* מצביע יהפוך לכפתור כאשר העכבר מעל */
-  }
-  
-  #feed-animal:hover {
-    background-color: #45a049; /* צבע רקע כאשר העכבר מעל */
-  }
+#detils {
+  font-size: 2rem;
+}
 
+/* הוספת מעט עיצוב נוסף לכותרת ולפרטים */
+#name {
+  font-size: 4rem;
+  margin-bottom: 15px;
+}
+
+/* עיצוב נוסף לכפתור */
+#feed-animal {
+  background-color: #ffffff; /* צבע רקע */
+  color: rgb(0, 0, 0); /* צבע טקסט */
+  padding: 10px 20px; /* מרווח בפנים */
+  border: none; /* הסרת גבול */
+  border-radius: 5px; /* פינות מעוגלות */
+  cursor: pointer; /* מצביע יהפוך לכפתור כאשר העכבר מעל */
+}
+
+#feed-animal:hover {
+  background-color: #45a049; /* צבע רקע כאשר העכבר מעל */
+}
+
+#related-animals {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  width: 100%; /* Adjust this value as needed */
+  margin-top: 40px; /* Space between #curAnimal and related animals */
+}
+
+.related-card {
+  flex: 0 1 200px; /* Adjust basis as needed */
+  /* Rest of your .related-card styles */
+  border-radius: 10px; /* קצוות מעוגלים */
+  overflow: hidden; /* מונע גלישת תוכן מחוץ לגבולות */
+  background-color: rgba(255, 255, 255, 0.5); /* שקיפות */
+  backdrop-filter: blur(10px); /* טשטוש הרקע חזק יותר */
+  text-align: center;
+  border: 3px solid #000000;
+}
+.card-img {
+  margin-top: 10px;
+  height: 274px; /* שומר על פרופורציות התמונה */
+  width: 180px;
+  border-radius: 10px; /* Add border radius to soften edges */
+}
+
+#titleHabitat {
+  text-align: center;
+  padding: 50px 0; /* Increase the padding to make the header taller */
+  color: #fff; /* Header text color */
+  font-size: 2.5em; /* Increase the font size */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a text shadow */
+  border-radius: 10px; /* Add border radius to soften edges */
+  animation: fadeIn 3s ease; /* Add fade-in animation */
+  width: 70%;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

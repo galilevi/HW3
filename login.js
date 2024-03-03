@@ -10,19 +10,19 @@ const getVisitorHTMLCard = (visitor) => {
           <p class="card-text">Coins: ${visitor.coins}</p>
         </div>
       </div>`;
-      
-const wrapper = document.createElement("div")
-wrapper.className= "visitor-card";
-wrapper.innerHTML = template;
 
-wrapper.addEventListener("click", () => handleVisitorClick (visitor));
-return wrapper;
+  const wrapper = document.createElement("div");
+  wrapper.className = "visitor-card";
+  wrapper.innerHTML = template;
+
+  wrapper.addEventListener("click", () => handleVisitorClick(visitor));
+  return wrapper;
 };
 
 const getCloseModalHTMLButton = () => {
   const closeButton = document.createElement("button");
-  closeButton.innerText="close modal";
-  closeButton.addEventListener("click",()=> dialog.close ())
+  closeButton.innerText = "close modal";
+  closeButton.addEventListener("click", () => dialog.close());
   return closeButton;
 };
 
@@ -33,7 +33,7 @@ const handleVisitorClick = (visitor) => {
   const loginButton = document.createElement("button");
   loginButton.textContent = "Login";
   loginButton.onclick = () => loginAsVisitor(visitor.name); // Triggers login
-  dialog.append(closeButton,loginButton, visitorCard);
+  dialog.append(closeButton, loginButton, visitorCard);
   dialog.showModal();
 };
 
@@ -44,8 +44,10 @@ const getSearchBox = () => {
   queryInput.className = "form-control my-4";
   queryInput.oninput = (e) => {
     visitorsForView = visitors.filter((visitor) =>
-    visitor.name.includes(e.target.value));
-    renderVisitors();};
+      visitor.name.includes(e.target.value)
+    );
+    renderVisitors();
+  };
   return queryInput;
 };
 
@@ -59,7 +61,10 @@ const getEmptyCardsHTMLTemplate = () => {
     <button id="clear-filter-btn" class="btn btn-dark">Clear search text</button>`;
 
   templateWrapper.innerHTML = template;
-  templateWrapper.children["clear-filter-btn"].addEventListener("click",clearSearchBox);
+  templateWrapper.children["clear-filter-btn"].addEventListener(
+    "click",
+    clearSearchBox
+  );
   return templateWrapper;
 };
 
@@ -84,22 +89,20 @@ const renderVisitors = () => {
 document.body.insertAdjacentElement("afterbegin", getSearchBox());
 window.addEventListener("load", renderVisitors);
 
-
-
 function loginAsVisitor(visitorname) {
   // תממשו את הלוגיקה של בחירת אורח שנכנס לגן החיות
   // שמרו את האורח שבחרתם, בלוקל סטורג' כך שבכל העמודים נדע מי האורח הנוכחי
-const currentVisitor= localStorage.getItem("currentVisitor")
+  const currentVisitor = localStorage.getItem("currentVisitor");
 
-if(currentVisitor)
-{
-  const confirmLogout = confirm(`A visitor is already logged in ${currentVisitor}. Do you want to log out and switch to a different visitor?`);
-  if (!confirmLogout){
-    return;
+  if (currentVisitor) {
+    const confirmLogout = confirm(
+      `A visitor is already logged in ${currentVisitor}. Do you want to log out and switch to a different visitor?`
+    );
+    if (!confirmLogout) {
+      return;
+    }
   }
+  localStorage.setItem("currentVisitor", visitorname);
+  alert(`${visitorname} is now logged in.`);
+  window.location.href = "/zoo.html";
 }
-localStorage.setItem("currentVisitor", visitorname);
-alert (`${visitorname} is now logged in.`);
-window.location.href="/zoo.html";
-}
-
