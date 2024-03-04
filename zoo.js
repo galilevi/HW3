@@ -1,3 +1,5 @@
+// let AllvisitoredAnimal = [];
+
 document.addEventListener("DOMContentLoaded", function () {
   renderAvailableAnimals();
 
@@ -40,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
 let animalToshow = animals;
 const searchAnimal = (e) => {
   animalToshow = animals.filter(function (animal) {
-    return animal.name.includes(e.value);
+    return animal.name.f(e.value);
   });
 
   renderAvailableAnimals();
@@ -66,10 +68,10 @@ function renderAvailableAnimals() {
     const animalCard = document.createElement("div");
     animalCard.className = "animal-card";
     if (
-      weight < animal.weight &&
+      weight <= animal.weight &&
       (color == animal.color || color == "" || color == undefined) &&
       (habitat == animal.habitat || habitat == "" || habitat == undefined) &&
-      height < animal.height &&
+      height <= animal.height &&
       (String(isPredator) == String(animal.isPredator) ||
         isPredator == "" ||
         isPredator == undefined)
@@ -85,11 +87,21 @@ function renderAvailableAnimals() {
             <p class="card-text">habitat: ${animal.habitat}</p>
           </div>`;
       wrapperAnimal.appendChild(animalCard);
-      animalCard.addEventListener("click", () => visitAnimal(animal));
+      animalCard.addEventListener("click", () => {
+        visitAnimal(animal), CountAnimalVisited(animal);
+      });
     }
-    // וודאו שאתם מציגים אך ורק את החיות שעומדות בפילטורים הנוכחיים
-    // במידה ואין פילטרים מסומנים, הציגו את כל החיות
   });
+}
+
+function CountAnimalVisited(animal) {
+  let AllvisitoredAnimal =
+    JSON.parse(localStorage.getItem("AllvisitoredAnimal")) || [];
+  AllvisitoredAnimal.push(animal);
+  localStorage.setItem(
+    "AllvisitoredAnimal",
+    JSON.stringify(AllvisitoredAnimal)
+  );
 }
 
 function visitAnimal(animal) {

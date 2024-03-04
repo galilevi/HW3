@@ -69,32 +69,28 @@ const dialogFeed = document.createElement("dialog");
 const feed = document.getElementById("feed-animal");
 feed.addEventListener("click", () => feedAnimal(currentVisitor));
 
-// function currentVisitorNow(currentVisitorName) {
-//   for (let i = 0; i < visitors.length; i++) {
-//     if (currentVisitorName === visitors[i].name) {
-//       const VisitorCoins = visitors[i].coins;
-//       localStorage.setItem("VisitorCoins", VisitorCoins);
-//     }
-//   }
-// }
-
 function feedAnimal(Visitor) {
-  // currentVisitorNow(Visitor);
   dialogFeed.innerHTML = "";
-  // if (VisitorCoins == 0) {
-  //   if (CurPredetor) {
-  //     visitorGotEaten();
-  //     return;
-  //   }
-  //   animalEscaped();
-  //   return;
-  // }
-  // for (let i = 0; i < visitorsArr.length; i++) {
-  //   if (Visitor.name === visitorsArr[i].name) {
-  //     visitorsArr[i].coins -= 2;
-  //     localStorage.setItem("visitors", JSON.stringify(visitorsArr));
-  //   }
-  // }
+  if (currentVisitor.coins == 0) {
+    if (currentAnimal.isPredator) {
+      dialogFeed.innerText = `Oh-No!!! You got Eaten by ${currentAnimal.name}. Now go back to Log-In page and choose another visitor`;
+      const BtnBackToLogin = BackToLogin();
+      dialogFeed.appendChild(BtnBackToLogin);
+      document.body.appendChild(dialogFeed);
+      dialogFeed.showModal();
+      visitorGotEaten();
+      return;
+    }
+    dialogFeed.innerText = `Oh-No!!! The animal ${currentAnimal.name} ran away from the zoo. Now go back to animal page and feed another animal`;
+    const BtnBackToZoo = BackToZoo();
+    dialogFeed.appendChild(BtnBackToZoo);
+    document.body.appendChild(dialogFeed);
+    dialogFeed.showModal();
+    visitorGotEaten();
+    animalEscaped();
+    return;
+  }
+
   currentVisitor.coins -= 2;
   localStorage.setItem("currentVisitor", JSON.stringify(currentVisitor));
 
@@ -116,10 +112,32 @@ const BackToZoo = () => {
   return BtnBackToZoo;
 };
 
+const BackToLogin = () => {
+  const BtnBackToLogin = document.createElement("button");
+  BtnBackToLogin.innerText = "Ok";
+  BtnBackToLogin.addEventListener(
+    "click",
+    () => (window.location.href = "/login.html")
+  );
+  return BtnBackToLogin;
+};
+
 function visitorGotEaten() {
   // ממשו את הלוגיקה של חיה שטורפת אורח
+  let newVisitors = JSON.parse(localStorage.getItem("visitors"));
+  const currentVisitor = JSON.parse(localStorage.getItem("currentVisitor"));
+  newVisitors = visitors.filter(
+    (visitor) => currentVisitor.name !== visitor.name
+  );
+  localStorage.setItem("visitors", JSON.stringify(newVisitors));
+  BackToLogin();
 }
 
 function animalEscaped() {
   //ממשו את הלוגיקה של חיה שבורחת מגן החיות
+  let newAnimals = JSON.parse(localStorage.getItem("animals"));
+  const currentAnimal = JSON.parse(localStorage.getItem("currentAnimal"));
+  newAnimals = animals.filter((animal) => currentAnimal.name !== animal.name);
+  localStorage.setItem("animals", JSON.stringify(newAnimals));
+  BackToZoo();
 }
