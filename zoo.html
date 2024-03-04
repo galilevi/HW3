@@ -6,10 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Zoo</title>
     <script src="./main.js"></script>
-    <link rel="stylesheet" href="./zoo.css"/>
+    <link rel="stylesheet" href="./zoo.css" />
   </head>
   <body>
     <h1>Choose an animal that you want to feed :</h1>
+    <div class="filters">
+      <select id="predator-select" onchange="setFilter('isPredator', value)">
+        <option value="">Select...</option>
+        <option value="true">Predetor</option>
+        <option value="false">Not Predetor</option>
+      </select>
+      <select id="habitat-select" onchange="setFilter('habitat', value)">
+        <option value="">Select...</option>
+        <option value="sea">sea</option>
+        <option value="land">land</option>
+      </select>
+      <label>weight</label>
+      <select id="weight-select" onchange="setFilter('weight', value)"></select>
+      <label>height</label>
+      <select id="height-select" onchange="setFilter('height', value)"></select>
+      <select id="color-select" onchange="setFilter('color', value)"></select>
+      <input
+        type="text"
+        placeholder="Enter Animal Name"
+        oninput="searchAnimal(this)"
+      />
+    </div>
     <div id="animal-cards"></div>
     <script src="zoo.js"></script>
   </body>

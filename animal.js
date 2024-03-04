@@ -1,50 +1,53 @@
 document.addEventListener("DOMContentLoaded", renderAnimal);
 
-const currentAnimalName = localStorage.getItem("currentAnimal");
+const currentAnimal = JSON.parse(localStorage.getItem("currentAnimal"));
+let visitorsArr = JSON.parse(localStorage.getItem("visitors"));
 
 function renderAnimal() {
-  if (!currentAnimalName) {
-    console.error("No animal selected");
-    return;
-  }
-  const animal = animals.find((animal) => animal.name === currentAnimalName);
-  if (!animal) {
-    console.error("Animal not found");
-    return;
-  }
   document.getElementById(
     "image"
-  ).innerHTML = `<img src="${animal.image}" alt="${animal.name}" style="width:100%;">`;
-  document.getElementById("name").textContent = `Name: ${animal.name}`;
-  document.getElementById("weight").textContent = `Weight: ${animal.weight}kg`;
-  document.getElementById("height").textContent = `Height: ${animal.height}cm`;
-  document.getElementById("color").textContent = `Color: ${animal.color}`;
-  document.getElementById("habitat").textContent = `Habitat: ${animal.habitat}`;
+  ).innerHTML = `<img src="${currentAnimal.image}" alt="${currentAnimal.name}" style="width:100%;">`;
+  document.getElementById("name").textContent = `Name: ${currentAnimal.name}`;
+  document.getElementById(
+    "weight"
+  ).textContent = `Weight: ${currentAnimal.weight}kg`;
+  document.getElementById(
+    "height"
+  ).textContent = `Height: ${currentAnimal.height}cm`;
+  document.getElementById(
+    "color"
+  ).textContent = `Color: ${currentAnimal.color}`;
+  document.getElementById(
+    "habitat"
+  ).textContent = `Habitat: ${currentAnimal.habitat}`;
   document.getElementById("isPredator").textContent = `Is Predator: ${
-    animal.isPredator ? "Yes" : "No"
+    currentAnimal.isPredator ? "Yes" : "No"
   }`;
-  currentHabitatNow(animal.name);
+  // currentHabitatNow(currentAnimal.name);
   renderRelatedAnimals();
 }
 
-function currentHabitatNow(currentAnimalName) {
-  for (let i = 0; i < animals.length; i++) {
-    if (currentAnimalName === animals[i].name) {
-      const CurHabitat = animals[i].habitat;
-      const CurPredetor = animals[i].isPredator;
-      localStorage.setItem("CurHabitat", CurHabitat);
-      localStorage.setItem("CurPredetor", CurPredetor);
-    }
-  }
-}
+// function currentHabitatNow(currentAnimalName) {
+//   for (let i = 0; i < animals.length; i++) {
+//     if (currentAnimalName === animals[i].name) {
+//       const CurHabitat = animals[i].habitat;
+//       const CurPredetor = animals[i].isPredator;
+//       localStorage.setItem("CurHabitat", CurHabitat);
+//       localStorage.setItem("CurPredetor", CurPredetor);
+//     }
+//   }
+// }
 
 function renderRelatedAnimals() {
   // ממשו את הלוגיקה שמרנדרת כרטיסיות של החיות ששדה ההאביטט שלהם זהה לחיה שמוצגת
-  const relatedHabitat = localStorage.getItem("CurHabitat");
+  const relatedHabitat = currentAnimal.habitat;
   const relatedCard = document.getElementById("related-animals");
   relatedCard.innerHTML = "";
   animals.forEach((animal) => {
-    if (relatedHabitat === animal.habitat && currentAnimalName != animal.name) {
+    if (
+      relatedHabitat === animal.habitat &&
+      currentAnimal.name != animal.name
+    ) {
       const animalCard = document.createElement("div");
       animalCard.className = "related-card";
       animalCard.innerHTML = `
@@ -61,22 +64,22 @@ function renderRelatedAnimals() {
     }
   });
 }
-const currentVisitorName = localStorage.getItem("currentVisitor");
+const currentVisitor = JSON.parse(localStorage.getItem("currentVisitor"));
 const dialogFeed = document.createElement("dialog");
 const feed = document.getElementById("feed-animal");
-feed.addEventListener("click", () => feedAnimal(currentVisitorName));
+feed.addEventListener("click", () => feedAnimal(currentVisitor));
 
-function currentVisitorNow(currentVisitorName) {
-  for (let i = 0; i < visitors.length; i++) {
-    if (currentVisitorName === visitors[i].name) {
-      const VisitorCoins = visitors[i].coins;
-      localStorage.setItem("VisitorCoins", VisitorCoins);
-    }
-  }
-}
+// function currentVisitorNow(currentVisitorName) {
+//   for (let i = 0; i < visitors.length; i++) {
+//     if (currentVisitorName === visitors[i].name) {
+//       const VisitorCoins = visitors[i].coins;
+//       localStorage.setItem("VisitorCoins", VisitorCoins);
+//     }
+//   }
+// }
 
 function feedAnimal(Visitor) {
-  currentVisitorNow(Visitor);
+  // currentVisitorNow(Visitor);
   dialogFeed.innerHTML = "";
   // if (VisitorCoins == 0) {
   //   if (CurPredetor) {
@@ -86,12 +89,15 @@ function feedAnimal(Visitor) {
   //   animalEscaped();
   //   return;
   // }
-  for (let i = 0; i < visitors.length; i++) {
-    if (Visitor === visitors[i].name) {
-      visitors[i].coins -= 2;
-      localStorage.setItem("visitors", JSON.stringify(visitors));
-    }
-  }
+  // for (let i = 0; i < visitorsArr.length; i++) {
+  //   if (Visitor.name === visitorsArr[i].name) {
+  //     visitorsArr[i].coins -= 2;
+  //     localStorage.setItem("visitors", JSON.stringify(visitorsArr));
+  //   }
+  // }
+  currentVisitor.coins -= 2;
+  localStorage.setItem("currentVisitor", JSON.stringify(currentVisitor));
+
   dialogFeed.innerText =
     "Thanks for feeding me, i hope you are enjoying your visit";
   const BtnBackToZoo = BackToZoo();
