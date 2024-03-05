@@ -69,6 +69,12 @@ const dialogFeed = document.createElement("dialog");
 const feed = document.getElementById("feed-animal");
 feed.addEventListener("click", () => feedAnimal(currentVisitor));
 
+function countFeededAnimals(animal) {
+  const AllFeededAnimal =
+    JSON.parse(localStorage.getItem("AllFeededAnimal")) || [];
+  AllFeededAnimal.push(animal);
+  localStorage.setItem("AllFeededAnimal", JSON.stringify(AllFeededAnimal));
+}
 function feedAnimal(Visitor) {
   dialogFeed.innerHTML = "";
   if (currentVisitor.coins == 0) {
@@ -105,10 +111,9 @@ function feedAnimal(Visitor) {
 const BackToZoo = () => {
   const BtnBackToZoo = document.createElement("button");
   BtnBackToZoo.innerText = "Back";
-  BtnBackToZoo.addEventListener(
-    "click",
-    () => (window.location.href = "/zoo.html")
-  );
+  BtnBackToZoo.addEventListener("click", () => {
+    (window.location.href = "/zoo.html"), countFeededAnimals(currentAnimal);
+  });
   return BtnBackToZoo;
 };
 

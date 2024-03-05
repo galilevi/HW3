@@ -1,0 +1,42 @@
+body {
+  background-image: url(./zoo-background.webp);
+  background-size: 100% 100%; /* Ensure the background image covers the entire viewport */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  font-family: Garamond, serif;
+}
+.card-img {
+  margin-top: 10px;
+  border-radius: 10px;
+  height: 274px; /* שומר על פרופורציות התמונה */
+  width: 180px;
+  margin: 20px;
+}
+
+#visited-animals {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 20px; /* מרווח בין הכרטיסיות */
+  justify-content: center; /* ממרכז את הכרטיסיות אם יש מקום */
+  padding: 20px; /* רווח בפנים מהקצוות */
+}
+#feeded-animals {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 20px; /* מרווח בין הכרטיסיות */
+  justify-content: center; /* ממרכז את הכרטיסיות אם יש מקום */
+  padding: 20px; /* רווח בפנים מהקצוות */
+}
+h2 {
+  text-align: center;
+  padding: 10px 0; /* Increase the padding to make the header taller */
+  color: #fff; /* Header text color */
+  font-size: 2.5em; /* Increase the font size */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a text shadow */
+  border-radius: 10px; /* Add border radius to soften edges */
+  animation: fadeIn 3s ease; /* Add fade-in animation */
+}
