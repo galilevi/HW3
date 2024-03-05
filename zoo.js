@@ -1,5 +1,5 @@
 // let AllvisitoredAnimal = [];
-
+let animalToshow = animals;
 document.addEventListener("DOMContentLoaded", function () {
   renderAvailableAnimals();
 
@@ -39,10 +39,10 @@ document.addEventListener("DOMContentLoaded", function () {
     selectColor.appendChild(option);
   }
 });
-let animalToshow = animals;
+
 const searchAnimal = (e) => {
   animalToshow = animals.filter(function (animal) {
-    return animal.name.f(e.value);
+    return animal.name.includes(e.value);
   });
 
   renderAvailableAnimals();
