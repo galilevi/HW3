@@ -40,3 +40,10 @@ h2 {
   border-radius: 10px; /* Add border radius to soften edges */
   animation: fadeIn 3s ease; /* Add fade-in animation */
 }
+
+p {
+  text-align: center;
+  padding: 10px 0; /* Increase the padding to make the header taller */
+  color: #000000; /* Header text color */
+  font-size: 2em; /* Increase the font size */
+}

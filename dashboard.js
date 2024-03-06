@@ -1,7 +1,8 @@
 document.addEventListener(
   "DOMContentLoaded",
   showVisitedAnimals(),
-  showFeededAnimals()
+  showFeededAnimals(),
+  showFavoriteAnimal()
 );
 
 function showVisitedAnimals() {
@@ -16,6 +17,7 @@ function showVisitedAnimals() {
       newVisitedAnimals.push(animal);
     }
   });
+  localStorage.setItem("newVisitedAnimals", JSON.stringify(newVisitedAnimals));
 
   const animalImags = document.createElement("div");
   animalImags.className = "animal-img";
@@ -49,6 +51,32 @@ function showFeededAnimals() {
 }
 function showFavoriteAnimal() {
   //ממשו את הלוגיקה שמציגה את החיה שהאורח ביקר הכי הרבה פעמים אצלה
-
-  AllvisitoredAnimal.forEach((animal) => {});
+  const FavAnimal = document.getElementById("favorite-animal");
+  const AllvisitoredAnimal2 = JSON.parse(
+    localStorage.getItem("AllvisitoredAnimal")
+  ); // לא מסונן
+  const newVisitedAnimals2 = JSON.parse(
+    localStorage.getItem("newVisitedAnimals")
+  ); //מסונן
+  let count = 0;
+  let MaxCount = 0;
+  let common = "";
+  for (let i = 0; i < newVisitedAnimals2.length; i++) {
+    for (let j = 0; j < AllvisitoredAnimal2.length; j++) {
+      if (newVisitedAnimals2[i].name === AllvisitoredAnimal2[j].name) {
+        count++;
+      }
+      if (count > MaxCount) {
+        common = newVisitedAnimals2[i];
+      }
+    }
+    count = 0;
+  }
+  console.log(common);
+  const FavAnimalCard = document.createElement("div");
+  FavAnimalCard.className = "animal-img";
+  FavAnimalCard.innerHTML = "";
+  FavAnimalCard.innerHTML += `<p>${common.name}</p>`;
+  FavAnimalCard.innerHTML += `<img class="card-img" src="${common.image}" alt="${common.image}"/>`;
+  FavAnimal.appendChild(FavAnimalCard);
 }
