@@ -104,7 +104,7 @@ function loginAsVisitor(visitorname) {
     if (visitor.name === visitorname) {
       localStorage.setItem("currentVisitor", JSON.stringify(visitor));
       alert(`${visitorname} is now logged in.`);
-      window.location.href = "/zoo.html";
+      window.location.href = "zoo.html";
       return;
     }
   });
