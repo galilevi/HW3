@@ -42,7 +42,7 @@ function setVisitor(value) {
 //איפוס אפליקציה ע"י איפוס לוקל סטורג'
 function clearLocalStorage() {
   localStorage.clear();
-  window.location.href = "/signup.html";
+  window.location.href = "signup.html";
 }
 
 //פונקציה שמסננת את מערך החיות שביקרנו בהן למערך חדש שבו כל חיה תופיעה רק פעם אחת

@@ -40,7 +40,7 @@ function setVisitor(value) {
 //מאפס את הלוקל סטורג בזמן לחיצה על RESET
 function clearLocalStorage() {
   localStorage.clear();
-  window.location.href = "/signup.html";
+  window.location.href = "signup.html";
 }
 
 //מציג את כרטיסיית החיה הספציפית שבחרנו לבקר או להאכיל
@@ -159,7 +159,7 @@ const BackToZoo = () => {
   const BtnBackToZoo = document.createElement("button");
   BtnBackToZoo.innerText = "Back";
   BtnBackToZoo.addEventListener("click", () => {
-    (window.location.href = "/zoo.html"), countFeededAnimals(currentAnimal);
+    (window.location.href = "zoo.html"), countFeededAnimals(currentAnimal);
   });
   return BtnBackToZoo;
 };
@@ -170,7 +170,7 @@ const BackToLogin = () => {
   BtnBackToLogin.innerText = "Ok";
   BtnBackToLogin.addEventListener(
     "click",
-    () => (window.location.href = "/login.html")
+    () => (window.location.href = "login.html")
   );
   return BtnBackToLogin;
 };

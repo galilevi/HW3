@@ -43,7 +43,7 @@ function setVisitor(value) {
 //איפוס אפליקציה ע"י איפוס לוקל סטורג'
 function clearLocalStorage() {
   localStorage.clear();
-  window.location.href = "/signup.html";
+  window.location.href = "signup.html";
 }
 
 //המערך הזמני שמכיל את החיות אחרי הפילטר הרלוונטי
@@ -160,7 +160,7 @@ function CountAnimalVisited(animal) {
 //שומר את החיה הספציפית שנכנסנו אליה בלוקל סטורג' (בזמן אמת)
 function visitAnimal(animal) {
   localStorage.setItem("currentAnimal", JSON.stringify(animal));
-  window.location.href = "/animal.html";
+  window.location.href = "animal.html";
 }
 
 //שמירת הפילטורים בלוקל סטורג' ומימושם ברינדור הכרטיסיות
