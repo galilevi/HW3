@@ -43,7 +43,7 @@ function createNewVisitor(event) {
   const newVisitor = makeVisitor(name, selectedAvatar);
   visitors.push(newVisitor);
   localStorage.setItem("visitors", JSON.stringify(visitors));
-  window.location.href = "/login.html";
+  window.location.href = "./login.html";
 }
 
 //בדיקה האם האורח קיים
