@@ -43,7 +43,7 @@ function createNewVisitor(event) {
   const newVisitor = makeVisitor(name, selectedAvatar);
   visitors.push(newVisitor);
   localStorage.setItem("visitors", JSON.stringify(visitors));
-  window.location.href = "/login.html";
+  window.location.href = "https://galilevi.github.io/HW3/login.html";
 }
 
 //בדיקה האם האורח קיים
