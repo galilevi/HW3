@@ -9,23 +9,40 @@
     <link rel="stylesheet" href="./zoo.css" />
   </head>
   <body>
-    <a href="./dashboard.html">DASHBOARD</a>
+    <button id="btnlogout">Logout</button>
+    <nav>
+      <div id="visitorInfo"></div>
+      <a href="./dashboard.html">View-Dashboard</a>
+
+      <div id="btnclean">
+        <button id="btnReset">ResetApp</button>
+      </div>
+      <select id="visitorlist" onchange="setVisitor(value)">
+        <option value="">--Please choose visitor--</option>
+      </select>
+    </nav>
+
     <h1>Choose an animal that you want to feed :</h1>
     <div class="filters">
+      <label id="weight">Is Predetor ?</label>
       <select id="predator-select" onchange="setFilter('isPredator', value)">
         <option value="">Select...</option>
         <option value="true">Predetor</option>
         <option value="false">Not Predetor</option>
       </select>
+      <label id="weight">Habitat:</label>
+
       <select id="habitat-select" onchange="setFilter('habitat', value)">
         <option value="">Select...</option>
         <option value="sea">sea</option>
         <option value="land">land</option>
       </select>
-      <label>weight</label>
+      <label id="weight">Weight:</label>
       <select id="weight-select" onchange="setFilter('weight', value)"></select>
-      <label>height</label>
+      <label id="height">Height:</label>
       <select id="height-select" onchange="setFilter('height', value)"></select>
+      <label id="weight">Color:</label>
+
       <select id="color-select" onchange="setFilter('color', value)"></select>
       <input
         type="text"

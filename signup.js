@@ -1,10 +1,12 @@
+//תפיסת הדיב של תמונות האבטר
 let selectedAvatar;
 document.getElementById("choose-avatar").addEventListener("click", function () {
   const panel = document.getElementById("avatar-panel");
-
+  window.location.href = "#avatar-panel";
   panel.style.display = panel.style.display === "none" ? "block" : "none";
 });
 
+//בחירת תמונת אווטר בהרשמת אורח
 document.querySelectorAll(".avatar").forEach((image) => {
   image.addEventListener("click", function () {
     selectedAvatar = this.getAttribute("src");
@@ -13,12 +15,11 @@ document.querySelectorAll(".avatar").forEach((image) => {
       .forEach((i) => i.classList.remove("selected"));
     this.classList.add("selected");
     document.getElementById("avatar-panel").style.display = "none";
-
-    // Store selected avatar in localStorage
     localStorage.setItem("selectedAvatar", selectedAvatar);
   });
 });
 
+//פונקציה של יצירת אורח חדש במערכת
 function createNewVisitor(event) {
   event.preventDefault();
   const nameInput = document.getElementById("name");
@@ -38,17 +39,19 @@ function createNewVisitor(event) {
     alert("A visitor with this name already exists!");
     return;
   }
-
+  //הכנסת המשתמש החדש ללוקל סטורג' ומעבר לעמוד ההתחברות
   const newVisitor = makeVisitor(name, selectedAvatar);
-  visitors.push(newVisitor); // Add new visitor to the visitors array
-  localStorage.setItem("visitors", JSON.stringify(visitors)); // Save updated visitors array in localStorage
+  visitors.push(newVisitor);
+  localStorage.setItem("visitors", JSON.stringify(visitors));
   window.location.href = "/login.html";
 }
 
+//בדיקה האם האורח קיים
 function visitorExists(name) {
   return visitors.some((visitor) => visitor.name === name);
 }
 
+// תבנית של אורח
 function makeVisitor(name, avatar) {
   return { name, coins: 50, image: avatar };
 }
@@ -57,29 +60,3 @@ const createForm = document.getElementById("create-visitor-form");
 if (createForm) {
   createForm.addEventListener("submit", createNewVisitor);
 }
-
-/**
-  צרו אורח חדש כאן 👇
-  ניתן לפצל את הלוגיקה למספר בלתי מוגבל של פונקציות.
-  כמו שיותר מפוצל וטהור - פונקציות עם מטרה יחידה ושם משמעותי שמסביר מה הפונקציה עושה ומחזירה
-  דוגמא:
-
-  const validateFormInputs = () => {
-    בודק האם האינפוטים קיימים ויש בהם ערך
-    מחזיר האם תקין או לא (בוליאני)
-  }
-
-  const visitorExists = (name) => {
-    מקבל שם ומחזיר תשובה האם השם האורח קיים
-  }
-
-  const makeVisitor = (name) => {
-    מקבל שם, בודק שאין אותו כבר במערך האורחים ומחזיר אובייקט אורח
-  }
-  **/
-
-/**************************************
-  מימשתי עבורכם את ההאזנה לאירוע שליחת טופס
-  שימו לב כי האיידי של createForm
-  זהה לאיידי של הטופס בעמוד signup.html
-  אין לשנות אותו */

@@ -205,7 +205,10 @@ function generateDataset() {
 generateDataset();
 
 //********************** */
-function logout() {
+function logout(currentVisitor) {
+  JSON.parse(localStorage.getItem("currentVisitor"));
+  localStorage.setItem("currentVisitor", "");
+  window.location.href = "/login.html";
   //ממשו את הלוגיקה שמתנתקת מאורח מחובר
   // שימו לב לנקות את השדה המתאים בלוקל סטורג'
 }

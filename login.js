@@ -1,6 +1,8 @@
+//נעבוד על מערך זמני (TEMP) כדי לעשות שינויים ולשחק עם הדאטה
 let visitorsForView = [...visitors];
 const dialog = document.querySelector("#visitor-dialog");
 
+// יצירת תבנית של אובייקט - כרטיסיית אורח והזרקתה לHTML
 const getVisitorHTMLCard = (visitor) => {
   const template = `
       <div class="card" style="min-height: 360px;" >
@@ -15,10 +17,12 @@ const getVisitorHTMLCard = (visitor) => {
   wrapper.className = "visitor-card";
   wrapper.innerHTML = template;
 
+  //לחיצה על תמונת האורח שפותחת את הודעת המודל עם פרטי האורח
   wrapper.addEventListener("click", () => handleVisitorClick(visitor));
   return wrapper;
 };
 
+//הכפתור שסוגר את המודל
 const getCloseModalHTMLButton = () => {
   const closeButton = document.createElement("button");
   closeButton.innerText = "close modal";
@@ -26,6 +30,7 @@ const getCloseModalHTMLButton = () => {
   return closeButton;
 };
 
+//הפונקציה שמחזיקה את כל האלמנטיים בתוך הודעת המודל
 const handleVisitorClick = (visitor) => {
   dialog.innerHTML = "";
   const visitorCard = getVisitorHTMLCard(visitor);
@@ -37,6 +42,7 @@ const handleVisitorClick = (visitor) => {
   dialog.showModal();
 };
 
+//תיבת חיפוש דינמית לאורח
 const getSearchBox = () => {
   const queryInput = document.createElement("input");
   queryInput.id = "query-input";
@@ -51,6 +57,7 @@ const getSearchBox = () => {
   return queryInput;
 };
 
+//הצגת הודעה ריקה כאשר האורח שרשמת לא נמצא במערכת
 const getEmptyCardsHTMLTemplate = () => {
   const templateWrapper = document.createElement("div");
   templateWrapper.className = "empty-result";
@@ -68,6 +75,7 @@ const getEmptyCardsHTMLTemplate = () => {
   return templateWrapper;
 };
 
+//כפתור שמנקה את תיבת החיפוש
 const clearSearchBox = () => {
   const input = document.getElementById("query-input");
   input.value = "";
@@ -75,6 +83,7 @@ const clearSearchBox = () => {
   renderVisitors();
 };
 
+//פוקנציה שמרנדרת את הכרטיסים לעמוד
 const renderVisitors = () => {
   const visitorCards = visitorsForView.map(getVisitorHTMLCard);
   const visitorsPlaceholder = document.getElementById("place-holder");
@@ -89,10 +98,8 @@ const renderVisitors = () => {
 document.body.insertAdjacentElement("afterbegin", getSearchBox());
 window.addEventListener("load", renderVisitors);
 
+//מוצאת את האורח שהתחברנו איתו,ושומרת אותו בלוקל סטורג' ומוציאה הודעה
 function loginAsVisitor(visitorname) {
-  // תממשו את הלוגיקה של בחירת אורח שנכנס לגן החיות
-  // שמרו את האורח שבחרתם, בלוקל סטורג' כך שבכל העמודים נדע מי האורח הנוכחי
-
   visitors.forEach((visitor) => {
     if (visitor.name === visitorname) {
       localStorage.setItem("currentVisitor", JSON.stringify(visitor));

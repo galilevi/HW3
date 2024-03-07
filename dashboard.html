@@ -9,6 +9,17 @@
     <link rel="stylesheet" href="./dashboard.css" />
   </head>
   <body>
+    <nav>
+      <div id="visitorInfo"></div>
+      <a href="./zoo.html">Back To Zoo</a>
+      <div id="btnclean">
+        <button id="btnReset">ResetApp</button>
+      </div>
+      <select id="visitorlist" onchange="setVisitor(value)">
+        <option value="">--Please choose visitor--</option>
+      </select>
+    </nav>
+
     <div id="visited-animals">
       <h2>All The Animals You Visited</h2>
     </div>

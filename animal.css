@@ -9,6 +9,9 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100%;
+
+  font-size: 1.5em;
+  font-weight: bold;
 }
 
 #curAnimal {
@@ -100,4 +103,25 @@ body {
   to {
     opacity: 1;
   }
+}
+nav {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  margin: 10px;
+}
+
+a {
+  color: #000000;
+  background-color: rgba(255, 255, 255, 0.5); /* שקיפות */
+  padding: 10px;
+  border-radius: 10px;
 }

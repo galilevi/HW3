@@ -2,7 +2,48 @@ document.addEventListener("DOMContentLoaded", renderAnimal);
 
 const currentAnimal = JSON.parse(localStorage.getItem("currentAnimal"));
 let visitorsArr = JSON.parse(localStorage.getItem("visitors"));
+const currentVisitor = JSON.parse(localStorage.getItem("currentVisitor"));
 
+document.addEventListener("DOMContentLoaded", () => {
+  updateVisitorInfo();
+});
+
+//פונקציה זו מכילה את פרטי האורח המחובר ,את כפתור איפוס האפליקציה ואופציית בחירת אורח אחר במידת הצורך
+function updateVisitorInfo() {
+  const divBtn = document.getElementById("btnclean");
+  const resetButton = document.getElementById("btnReset");
+  resetButton.addEventListener("click", clearLocalStorage);
+  divBtn.appendChild(resetButton);
+
+  const visitorInfo = document.getElementById("visitorInfo");
+  visitorInfo.innerHTML = `Visitor Name: ${currentVisitor.name},  Coins: ${currentVisitor.coins}`;
+
+  const selectvisitor = document.getElementById("visitorlist");
+  for (let i = 0; i < visitors.length; i++) {
+    const option = document.createElement("option");
+    option.value = visitors[i].name;
+    option.text = visitors[i].name;
+    selectvisitor.appendChild(option);
+  }
+}
+
+//פונקציית עזר - מרעננת את העמוד לאחר בחירת אורח חדש דרך התיבת select
+function setVisitor(value) {
+  for (let i = 0; i < visitors.length; i++) {
+    if (visitors[i].name === value) {
+      localStorage.setItem("currentVisitor", JSON.stringify(visitors[i]));
+    }
+  }
+  location.reload();
+}
+
+//מאפס את הלוקל סטורג בזמן לחיצה על RESET
+function clearLocalStorage() {
+  localStorage.clear();
+  window.location.href = "/signup.html";
+}
+
+//מציג את כרטיסיית החיה הספציפית שבחרנו לבקר או להאכיל
 function renderAnimal() {
   document.getElementById(
     "image"
@@ -27,19 +68,8 @@ function renderAnimal() {
   renderRelatedAnimals();
 }
 
-// function currentHabitatNow(currentAnimalName) {
-//   for (let i = 0; i < animals.length; i++) {
-//     if (currentAnimalName === animals[i].name) {
-//       const CurHabitat = animals[i].habitat;
-//       const CurPredetor = animals[i].isPredator;
-//       localStorage.setItem("CurHabitat", CurHabitat);
-//       localStorage.setItem("CurPredetor", CurPredetor);
-//     }
-//   }
-// }
-
+//פונקציה מרנדרת את כרטיסיות החיות שנמצאות באותה סביבת גידול
 function renderRelatedAnimals() {
-  // ממשו את הלוגיקה שמרנדרת כרטיסיות של החיות ששדה ההאביטט שלהם זהה לחיה שמוצגת
   const relatedHabitat = currentAnimal.habitat;
   const relatedCard = document.getElementById("related-animals");
   relatedCard.innerHTML = "";
@@ -64,17 +94,21 @@ function renderRelatedAnimals() {
     }
   });
 }
-const currentVisitor = JSON.parse(localStorage.getItem("currentVisitor"));
+
+//בעת לחיצה על כפתור האכלה מפעילים פוקנציית האכלה
 const dialogFeed = document.createElement("dialog");
 const feed = document.getElementById("feed-animal");
 feed.addEventListener("click", () => feedAnimal(currentVisitor));
 
+//שומר את כל החיות שהאכלנו אותם בלוקל סטורג'
 function countFeededAnimals(animal) {
   const AllFeededAnimal =
     JSON.parse(localStorage.getItem("AllFeededAnimal")) || [];
   AllFeededAnimal.push(animal);
   localStorage.setItem("AllFeededAnimal", JSON.stringify(AllFeededAnimal));
 }
+
+// פונקנציית האכלת החיות שמעדכנת את מטבעות האורח ופועלת במקרה קיצון בהן לא נשאר לאורח מטבעות
 function feedAnimal(Visitor) {
   dialogFeed.innerHTML = "";
   if (currentVisitor.coins == 0) {
@@ -97,17 +131,30 @@ function feedAnimal(Visitor) {
     return;
   }
 
+  //עידכון מטבעות האורח ופתיחת מודל
   currentVisitor.coins -= 2;
   localStorage.setItem("currentVisitor", JSON.stringify(currentVisitor));
-
   dialogFeed.innerText =
     "Thanks for feeding me, i hope you are enjoying your visit";
   const BtnBackToZoo = BackToZoo();
   dialogFeed.appendChild(BtnBackToZoo);
   document.body.appendChild(dialogFeed);
   dialogFeed.showModal();
+  updateCoins(currentVisitor);
+}
+//עידכון המטבעות של האורח בתוך מערך האורחים בלוקל סטורג'
+function updateCoins(currentVisitor) {
+  const visitors = JSON.parse(localStorage.getItem("visitors"));
+  for (let i = 0; i < visitors.length; i++) {
+    if (visitors[i].name === currentVisitor.name) {
+      visitors[i].coins = currentVisitor.coins;
+      localStorage.setItem("visitors", JSON.stringify(visitors));
+    }
+  }
+  return;
 }
 
+//כפתור חזרה לגן החיות
 const BackToZoo = () => {
   const BtnBackToZoo = document.createElement("button");
   BtnBackToZoo.innerText = "Back";
@@ -117,6 +164,7 @@ const BackToZoo = () => {
   return BtnBackToZoo;
 };
 
+//כפתור חזרה לעמוד התחברות
 const BackToLogin = () => {
   const BtnBackToLogin = document.createElement("button");
   BtnBackToLogin.innerText = "Ok";
@@ -127,8 +175,8 @@ const BackToLogin = () => {
   return BtnBackToLogin;
 };
 
+//פונקציה שטורפת את האורח ומוציאה אותו ממאגר האורחים
 function visitorGotEaten() {
-  // ממשו את הלוגיקה של חיה שטורפת אורח
   let newVisitors = JSON.parse(localStorage.getItem("visitors"));
   const currentVisitor = JSON.parse(localStorage.getItem("currentVisitor"));
   newVisitors = visitors.filter(
@@ -138,6 +186,7 @@ function visitorGotEaten() {
   BackToLogin();
 }
 
+//פונקציה שבה החיה בורחת ויוצאת ממאגר החיות
 function animalEscaped() {
   //ממשו את הלוגיקה של חיה שבורחת מגן החיות
   let newAnimals = JSON.parse(localStorage.getItem("animals"));

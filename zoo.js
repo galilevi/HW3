@@ -1,8 +1,57 @@
-// let AllvisitoredAnimal = [];
+const currentVisitor = JSON.parse(localStorage.getItem("currentVisitor"));
+document;
+
+document.addEventListener("DOMContentLoaded", () => {
+  updateVisitorInfo();
+});
+
+//כפתור התנתקות מאורח
+const btnLogout = document.getElementById("btnlogout");
+btnLogout.addEventListener("click", () => logout(currentVisitor));
+
+document.addEventListener;
+
+//פונקציה זו מכילה את פרטי האורח המחובר ,את כפתור איפוס האפליקציה ואופציית בחירת אורח אחר במידת הצורך
+function updateVisitorInfo() {
+  const divBtn = document.getElementById("btnclean");
+  const resetButton = document.getElementById("btnReset");
+  resetButton.addEventListener("click", clearLocalStorage);
+  divBtn.appendChild(resetButton);
+
+  const visitorInfo = document.getElementById("visitorInfo");
+  visitorInfo.innerHTML = `Visitor Name: ${currentVisitor.name},  Coins: ${currentVisitor.coins}`;
+
+  const selectvisitor = document.getElementById("visitorlist");
+  for (let i = 0; i < visitors.length; i++) {
+    const option = document.createElement("option");
+    option.value = visitors[i].name;
+    option.text = visitors[i].name;
+    selectvisitor.appendChild(option);
+  }
+}
+
+//פונקציית עזר - מרעננת את העמוד לאחר בחירת אורח חדש דרך התיבת select
+function setVisitor(value) {
+  for (let i = 0; i < visitors.length; i++) {
+    if (visitors[i].name === value) {
+      localStorage.setItem("currentVisitor", JSON.stringify(visitors[i]));
+    }
+  }
+  location.reload();
+}
+
+//איפוס אפליקציה ע"י איפוס לוקל סטורג'
+function clearLocalStorage() {
+  localStorage.clear();
+  window.location.href = "/signup.html";
+}
+
+//המערך הזמני שמכיל את החיות אחרי הפילטר הרלוונטי
 let animalToshow = animals;
 document.addEventListener("DOMContentLoaded", function () {
   renderAvailableAnimals();
 
+  //בניית הפילטרים
   const selectElement = document.getElementById("weight-select");
   for (let i = 0; i <= 1200; i += 50) {
     const option = document.createElement("option");
@@ -26,6 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   const selectColor = document.getElementById("color-select");
 
+  //בניית פילטר הצבע - באופן דינמי לפי סוגי החיות
   for (let i in colors) {
     const option = document.createElement("option");
     if (i == 0) {
@@ -40,6 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+//תיבת חיפוש טקסטי לחיות
 const searchAnimal = (e) => {
   animalToshow = animals.filter(function (animal) {
     return animal.name.includes(e.value);
@@ -48,8 +99,8 @@ const searchAnimal = (e) => {
   renderAvailableAnimals();
 };
 
+//מרנדרת את כל כרטיסיות החיות בהתחלה ולאחר הפילטרים
 function renderAvailableAnimals() {
-  // ממשו את הלוגיקה שמרנדרת את החיות לתוך הדיב עם האיידי animal-cards
   const wrapperAnimal = document.getElementById("animal-cards");
   wrapperAnimal.innerHTML = "";
   if (animalToshow.length == 0) {
@@ -64,6 +115,7 @@ function renderAvailableAnimals() {
   const height = JSON.parse(localStorage.getItem("height"));
   const color = localStorage.getItem("color");
 
+  //לולאה שעוברת על מערך החיות ובודקת את הפילטרים ומציגה את כרטיסיית החיה מתאימה
   animalToshow.forEach((animal) => {
     const animalCard = document.createElement("div");
     animalCard.className = "animal-card";
@@ -94,6 +146,7 @@ function renderAvailableAnimals() {
   });
 }
 
+// פונקציה ששומרת כל לחיצה שנכנסנו לחיה (כללי) - מציגה את כל החיות שביקרנו אותן
 function CountAnimalVisited(animal) {
   let AllvisitoredAnimal =
     JSON.parse(localStorage.getItem("AllvisitoredAnimal")) || [];
@@ -104,14 +157,13 @@ function CountAnimalVisited(animal) {
   );
 }
 
+//שומר את החיה הספציפית שנכנסנו אליה בלוקל סטורג' (בזמן אמת)
 function visitAnimal(animal) {
   localStorage.setItem("currentAnimal", JSON.stringify(animal));
   window.location.href = "/animal.html";
-
-  // ממשו את הלוגיקה של מעבר לעמוד חיה עבור החיה הספציפית שנבחרה
-  // שמרו בלוקל סטורג' את החיה שנבחרה, כך שבעמוד החיה נוכל לשלוף אותה מהסטורג' ולהציגה בהתאם
 }
 
+//שמירת הפילטורים בלוקל סטורג' ומימושם ברינדור הכרטיסיות
 function setFilter(filterKey, filterValue) {
   localStorage.setItem(filterKey, filterValue);
   renderAvailableAnimals();

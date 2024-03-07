@@ -5,6 +5,8 @@ body {
   background-position: center;
   background-attachment: fixed;
   font-family: Garamond, serif;
+  font-size: 1.5em;
+  font-weight: bold;
 }
 .card-img {
   margin-top: 10px;
@@ -14,31 +16,17 @@ body {
   margin: 20px;
 }
 
-#visited-animals {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  gap: 20px; /* מרווח בין הכרטיסיות */
-  justify-content: center; /* ממרכז את הכרטיסיות אם יש מקום */
-  padding: 20px; /* רווח בפנים מהקצוות */
-}
-#feeded-animals {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  gap: 20px; /* מרווח בין הכרטיסיות */
-  justify-content: center; /* ממרכז את הכרטיסיות אם יש מקום */
-  padding: 20px; /* רווח בפנים מהקצוות */
-}
 h2 {
   text-align: center;
-  padding: 10px 0; /* Increase the padding to make the header taller */
+  padding: 20px; /* Increase the padding to make the header taller */
   color: #fff; /* Header text color */
   font-size: 2.5em; /* Increase the font size */
   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a text shadow */
   border-radius: 10px; /* Add border radius to soften edges */
   animation: fadeIn 3s ease; /* Add fade-in animation */
+  /* width: 100%;
+  margin: 1px; */
 }
 
 p {
@@ -46,4 +34,77 @@ p {
   padding: 10px 0; /* Increase the padding to make the header taller */
   color: #000000; /* Header text color */
   font-size: 2em; /* Increase the font size */
+}
+
+.animal-img {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* מרווח בין הכרטיסיות */
+  justify-content: center; /* ממרכז את הכרטיסיות אם יש מקום */
+  padding: 20px; /* רווח בפנים מהקצוות */
+}
+
+#visited-animals {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+
+#feeded-animals {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+
+#favorite-animal {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+
+#Fav-animal-img {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* מרווח בין הכרטיסיות */
+  justify-content: center; /* ממרכז את הכרטיסיות אם יש מקום */
+  padding: 20px; /* רווח בפנים מהקצוות */
+}
+
+p {
+  margin: 0%;
+  padding: 0%;
+  color: black; /* Header text color */
+  font-size: 3em; /* Increase the font size */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a text shadow */
+  border-radius: 10px; /* Add border radius to soften edges */
+  animation: fadeIn 3s ease; /* Add fade-in animation */
+}
+nav {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  margin: 10px;
+}
+a {
+  color: #000000;
+  background-color: rgba(255, 255, 255, 0.5); /* שקיפות */
+  padding: 10px;
+  border-radius: 10px;
 }

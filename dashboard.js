@@ -4,9 +4,49 @@ document.addEventListener(
   showFeededAnimals(),
   showFavoriteAnimal()
 );
+const currentVisitor = JSON.parse(localStorage.getItem("currentVisitor"));
 
+document.addEventListener("DOMContentLoaded", () => {
+  updateVisitorInfo();
+});
+
+//פונקציה זו מכילה את פרטי האורח המחובר ,את כפתור איפוס האפליקציה ואופציית בחירת אורח אחר במידת הצורך
+function updateVisitorInfo() {
+  const divBtn = document.getElementById("btnclean");
+  const resetButton = document.getElementById("btnReset");
+  resetButton.addEventListener("click", clearLocalStorage);
+  divBtn.appendChild(resetButton);
+
+  const visitorInfo = document.getElementById("visitorInfo");
+  visitorInfo.innerHTML = `Visitor Name: ${currentVisitor.name},  Coins: ${currentVisitor.coins}`;
+
+  const selectvisitor = document.getElementById("visitorlist");
+  for (let i = 0; i < visitors.length; i++) {
+    const option = document.createElement("option");
+    option.value = visitors[i].name;
+    option.text = visitors[i].name;
+    selectvisitor.appendChild(option);
+  }
+}
+
+//פונקציית עזר - מרעננת את העמוד לאחר בחירת אורח חדש דרך התיבת select
+function setVisitor(value) {
+  for (let i = 0; i < visitors.length; i++) {
+    if (visitors[i].name === value) {
+      localStorage.setItem("currentVisitor", JSON.stringify(visitors[i]));
+    }
+  }
+  location.reload();
+}
+
+//איפוס אפליקציה ע"י איפוס לוקל סטורג'
+function clearLocalStorage() {
+  localStorage.clear();
+  window.location.href = "/signup.html";
+}
+
+//פונקציה שמסננת את מערך החיות שביקרנו בהן למערך חדש שבו כל חיה תופיעה רק פעם אחת
 function showVisitedAnimals() {
-  //ממשו את הלוגיקה שמציגה את החיות שהאורח הנוכחי ביקר בהן
   const visitedAnimals = document.getElementById("visited-animals");
   const AllvisitoredAnimal = JSON.parse(
     localStorage.getItem("AllvisitoredAnimal")
@@ -28,8 +68,9 @@ function showVisitedAnimals() {
     visitedAnimals.appendChild(animalImags);
   }
 }
+
+//פונקציה שמסננת את מערך החיות שהאכלנו אותן למערך חדש שבו כל חיה תופיעה רק פעם אחת
 function showFeededAnimals() {
-  //ממשו את הלוגיקה שמציגה את החיות שהאורח הנוכחי האכיל אותן
   const FedAnimals = document.getElementById("feeded-animals");
   const AllFedAnimal = JSON.parse(localStorage.getItem("AllFeededAnimal"));
   const newFedAnimals = [];
@@ -49,8 +90,9 @@ function showFeededAnimals() {
     FedAnimals.appendChild(animalImags);
   }
 }
+
+//פונקציה שמציגה את החיה שהאורח ביקר הכי הרבה פעמים - האהובה ביותר
 function showFavoriteAnimal() {
-  //ממשו את הלוגיקה שמציגה את החיה שהאורח ביקר הכי הרבה פעמים אצלה
   const FavAnimal = document.getElementById("favorite-animal");
   const AllvisitoredAnimal2 = JSON.parse(
     localStorage.getItem("AllvisitoredAnimal")
@@ -74,7 +116,7 @@ function showFavoriteAnimal() {
   }
   console.log(common);
   const FavAnimalCard = document.createElement("div");
-  FavAnimalCard.className = "animal-img";
+  FavAnimalCard.className = "Fav-animal-img";
   FavAnimalCard.innerHTML = "";
   FavAnimalCard.innerHTML += `<p>${common.name}</p>`;
   FavAnimalCard.innerHTML += `<img class="card-img" src="${common.image}" alt="${common.image}"/>`;
