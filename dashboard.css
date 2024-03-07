@@ -1,6 +1,6 @@
 body {
   background-image: url(./zoo-background.webp);
-  background-size: 100% 100%; /* Ensure the background image covers the entire viewport */
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;

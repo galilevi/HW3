@@ -1,11 +1,10 @@
 body {
   background-image: url(./zoo-background.webp);
-  background-size: 100% 100%; /* Ensure the background image covers the entire viewport */
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
   font-family: Garamond, serif;
-
 }
 
 #place-holder {
@@ -65,5 +64,5 @@ button:hover {
   border: 2px solid #392f01; /* Optional: Adds a solid border to make the input stand out */
   border-radius: 10px; /* Optional: Rounds the corners for a modern look */
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: Adds a subtle shadow for depth */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow for depth */
 }
